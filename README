@@ -10,18 +10,26 @@ Git tree:   https://github.com/AndreaDejanGrande/Svarog
 
 P.S.: check vDinar's official pool! Mine it at
       stratum+tcp://vdinar.jugoslaven.com:3333
-      *Be sure you made a worker account before!
+      *Be sure you made a worker account before:
+       https://svarog.jugoslaven.com
 
 Dependencies:
-	libcurl			http://curl.haxx.se/libcurl/
-	jansson			http://www.digip.org/jansson/
-		(jansson is included in-tree)
+        automake
+                (automake only needed if building
+                 from git repo on a *nix OS)
+        libcurl                 http://curl.haxx.se/libcurl/
+        jansson                 http://www.digip.org/jansson/
+                (jansson is included in-tree)
+
+*nix dependencies instructions:
+        sudo apt-get install automake
+        sudo apt-get install libcurl4-openssl-dev
 
 Basic *nix build instructions:
-	./autogen.sh	# only needed if building from git repo
-	./nomacro.pl	# in case the assembler doesn't support macros
-	./configure CFLAGS="-O3" # Make sure -O3 is an O and not a zero!
-	make
+        ./autogen.sh    # only needed if building from git repo
+        ./nomacro.pl    # in case the assembler doesn't support macros
+        ./configure CFLAGS="-O3" # Make sure -O3 is an O and not a zero!
+        make
 
 Notes for AIX users:
 	* To build a 64-bit binary, export OBJECT_MODE=64
