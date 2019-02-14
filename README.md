@@ -1,42 +1,67 @@
+# Svarog
+
+## Introduction
+
 Svarog Miner is a multi-threaded CPU miner for vDinar,
 made mainly with the purpose of leaving a source to
 understand vDinar's block structure and protocol.
 Fork of Jeff Garzik's reference cpuminer.
-
-License: GPLv2.  See COPYING for details.
-
-Downloads:  https://github.com/AndreaDejanGrande/Svarog/releases
-Git tree:   https://github.com/AndreaDejanGrande/Svarog
 
 P.S.: check vDinar's official pool! Mine it at
       stratum+tcp://vdinar.jugoslaven.com:3333
       *Be sure you made a worker account before:
        https://svarog.jugoslaven.com
 
-Dependencies:
-        automake
-                (automake only needed if building
-                 from git repo on a *nix OS)
-        libcurl                 http://curl.haxx.se/libcurl/
-        jansson                 http://www.digip.org/jansson/
-                (jansson is included in-tree)
+**Downloads**:  https://github.com/AndreaDejanGrande/Svarog/releases
 
-*nix dependencies instructions:
+**Git tree**:   https://github.com/AndreaDejanGrande/Svarog
+
+License: GPLv2.  See COPYING for details.
+
+
+## Documentation
+
+Documentation is available in directory `doc`. It is organized by topics:
+
+* `FAQ.md` for frequently asked questions.
+
+If you'd like to contribute with your own documentation, fork this project
+and submit a pull request.
+
+
+## Building
+
+### Dependencies
+
+Mandatory:
+
+* [automake]
+  (automake only needed if building
+   from git repo on a *nix OS)
+* [libcurl](http://curl.haxx.se/libcurl/)
+* [jansson](http://www.digip.org/jansson/)
+  (jansson is included in-tree)
+
+### *nix example
+
         sudo apt-get install automake
         sudo apt-get install libcurl4-openssl-dev
 
-Basic *nix build instructions:
+### *nix build instructions
+
         ./autogen.sh    # only needed if building from git repo
         ./nomacro.pl    # in case the assembler doesn't support macros
         ./configure CFLAGS="-O3" # Make sure -O3 is an O and not a zero!
         make
 
-Notes for AIX users:
+### Notes for AIX users
+
 	* To build a 64-bit binary, export OBJECT_MODE=64
 	* GNU-style long options are not supported, but are accessible
 	  via configuration file
 
-Basic Windows build instructions, using MinGW:
+### Windows build instructions, using MinGW
+
 	Install MinGW and the MSYS Developer Tool Kit (http://www.mingw.org/)
 		* Make sure you have mstcpip.h in MinGW\include
 	If using MinGW-w64, install pthreads-w64
@@ -48,7 +73,8 @@ Basic Windows build instructions, using MinGW:
 		LIBCURL="-lcurldll" ./configure CFLAGS="-O3"
 		make
 
-Architecture-specific notes:
+### Architecture-specific notes
+
 	ARM:	No runtime CPU detection. The miner can take advantage
 		of some instructions specific to ARMv5E and later processors,
 		but the decision whether to use them is made at compile time,
@@ -70,7 +96,9 @@ Architecture-specific notes:
 		can still be built, but unavailable optimizations are left off.
 		The miner uses the VIA Padlock Hash Engine where available.
 
-Usage instructions:  Run "svarog --help" to see options.
+### Usage instructions
+
+Run "svarog --help" to see options.
 
 Connecting through a proxy:  Use the --proxy option.
 To use a SOCKS proxy, add a socks4:// or socks5:// prefix to the proxy host.
@@ -79,7 +107,3 @@ available since libcurl 7.18.0.
 If no protocol is specified, the proxy is assumed to be a HTTP proxy.
 When the --proxy option is not used, the program honors the http_proxy
 and all_proxy environment variables.
-
-Also many issues and FAQs are covered in the forum thread
-dedicated to this program,
-	https://bitcointalk.org/index.php?topic=55038.0
