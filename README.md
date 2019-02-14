@@ -35,7 +35,7 @@ and submit a pull request.
 
 Mandatory:
 
-* [automake]
+* [automake](https://www.gnu.org/software/automake/)
   (automake only needed if building
    from git repo on a *nix OS)
 * [libcurl](http://curl.haxx.se/libcurl/)
