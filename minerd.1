@@ -1,64 +1,65 @@
-.TH MINERD 1 "June 2017" "cpuminer 2.5.0"
+.TH SVAROG 1 "February 2019 " "Svarog 1.1.0"
 .SH NAME
-minerd \- CPU miner for Bitcoin and Litecoin
+Svarog \- CPU miner for vCrypt (vDinar)
 .SH SYNOPSIS
-.B minerd
+.B svarog
 [\fIOPTION\fR]...
 .SH DESCRIPTION
-.B minerd
-is a multi-threaded CPU miner for Bitcoin, Litecoin and other cryptocurrencies.
+.B svarog
+is a multi-threaded CPU miner for vCrypt algorithm (e.g. vDinar).
 It supports the getwork and getblocktemplate (BIP 22) methods,
 as well as the Stratum mining protocol.
 .PP
-In its normal mode of operation, \fBminerd\fR connects to a mining server
+In its normal mode of operation, \fBSvarog\fR connects to a mining server
 (specified with the \fB\-o\fR option), receives work from it and starts hashing.
 As soon as a solution is found, it is submitted to the same mining server,
 which can accept or reject it.
 When using getwork or getblocktemplate,
-\fBminerd\fR can take advantage of long polling, if the server supports it;
+\fBSvarog\fR can take advantage of long polling, if the server supports it;
 in any case, fresh work is fetched as needed.
 When using the Stratum protocol this is not possible,
 and the server is responsible for sending fresh work at least every minute;
 if it fails to do so,
-\fBminerd\fR may drop the connection and try reconnecting again.
+\fBSvarog\fR may drop the connection and try reconnecting again.
 .PP
-By default, \fBminerd\fR writes all its messages to standard error.
+By default, \fBSvarog\fR writes all its messages to standard error.
 On systems that have a syslog, the \fB\-\-syslog\fR option can be used
 to write to it instead.
 .PP
 On start, the nice value of all miner threads is set to 19.
 On Linux, the scheduling policy is also changed to SCHED_IDLE,
 or to SCHED_BATCH if that fails.
-On multiprocessor systems, \fBminerd\fR
+On multiprocessor systems, \fBSvarog\fR
 automatically sets the CPU affinity of miner threads
 if the number of threads is a multiple of the number of processors.
 .SH EXAMPLES
-To connect to a Litecoin mining pool that provides a Stratum server
-at example.com on port 3333, authenticating as worker "foo" with password "bar":
+To connect to a vDunar mining pool that provides a Stratum server
+at svarog.jugoslaven.com on port 3333, authenticating as user "DejanGrande",
+worker "Svarog" with password "1234":
 .PP
 .nf
 .RS
-minerd \-o stratum+tcp://example.com:3333 \-O foo:bar
+svarog \-o stratum+tcp://example.com:3333 \-O DejanGrande.Svarog:1234
 .RE
 .fi
 .PP
-To mine to a local Bitcoin testnet instance running on port 18332,
+To mine to a local vDinar testnet instance running on port 19333,
 authenticating with username "rpcuser" and password "rpcpass":
 .PP
 .nf
 .RS
-minerd \-a sha256d \-o http://localhost:18332 \-O rpcuser:rpcpass \\
-	\-\-coinbase\-addr=mpXwg4jMtRhuSpVq4xS3HFHmCmWp9NyGKt
+svarog \-a vcrypt \-o http://localhost:19333 \-O rpcuser:rpcpass \\
+	\-\-coinbase\-addr=DpXwg4jMtRhuSpVq4xS3HFHmCmWp9NyGKt
 .RE
 .fi
 .PP
-To connect to a Litecoin P2Pool node running on my.server on port 9327,
+To connect to a vDinar P2Pool node running on my.server on port 9327,
 mining in the background and having output sent to the syslog facility,
 omitting the per-thread hashmeter output:
 .PP
 .nf
 .RS
-minerd \-BSq \-o http://my.server:9327
+svarogd \-BSq \-o http://my.server:9327
 .RE
 .fi
 .SH OPTIONS
@@ -70,13 +71,10 @@ Possible values are:
 .RS 11
 .TP 10
 .B vcrypt
-vcrypt(1024, 1, 1) (used by Litecoin)
+vcrypt(1024, 1, 1) (used by vDinar)
 .TP
 .B vcrypt:\fIN\fR
 vcrypt(\fIN\fR, 1, 1) (\fIN\fR must be a power of 2 greater than 1)
-.TP
-.B sha256d
-SHA-256d (used by Bitcoin)
 .RE
 .TP
 \fB\-\-benchmark\fR
@@ -107,8 +105,8 @@ Sample configuration file:
 
 .nf
 	{
-		"url": "stratum+tcp://example.com:3333",
-		"userpass": "foo:bar",
+		"url": "stratum+tcp://svarog.jugoslaven.com:3333",
+		"userpass": "DejanGrande.Svarog:1234",
 		"retry-pause": "10",
 		"quiet": true
 	}
@@ -219,7 +217,9 @@ Sets the proxy server to use if no protocol-specific proxy is set.
 Using an environment variable to set the proxy has the same effect as
 using the \fB\-x\fR option.
 .SH AUTHOR
-Most of the code in the current version of minerd was written by
+Fork from minerd made by Andrea Dejan Grande <svarog@jugoslaven.com>.
+
+Original code from the forked cpu-miner project was mostly written by
 Pooler <pooler@litecoinpool.org> with contributions from others.
 
 The original minerd was written by Jeff Garzik <jeff@garzik.org>.
