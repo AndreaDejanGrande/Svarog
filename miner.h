@@ -1,7 +1,7 @@
 #ifndef __MINER_H__
 #define __MINER_H__
 
-#include "cpuminer-config.h"
+#include "svarog-config.h"
 
 #include <stdbool.h>
 #include <inttypes.h>

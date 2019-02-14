@@ -9,11 +9,11 @@ EXTRA_DIST	= example-cfg.json nomacro.pl
 
 SUBDIRS		= compat
 
-bin_PROGRAMS	= minerd
+bin_PROGRAMS	= svarog
 
-dist_man_MANS	= minerd.1
+dist_man_MANS	= svarog.1
 
-minerd_SOURCES	= elist.h miner.h compat.h \
+svarog_SOURCES	= elist.h miner.h compat.h \
 		  cpu-miner.c util.c \
 		  sha2.c vcrypt.c
 if USE_ASM

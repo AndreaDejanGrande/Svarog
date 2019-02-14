@@ -7,7 +7,7 @@
  * any later version.  See COPYING for more details.
  */
 
-#include "cpuminer-config.h"
+#include "svarog-config.h"
 
 #if defined(USE_ASM) && (defined(__powerpc__) || defined(__ppc__) || defined(__PPC__))
 
