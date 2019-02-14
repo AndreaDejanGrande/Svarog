@@ -70,7 +70,7 @@ Architecture-specific notes:
 		can still be built, but unavailable optimizations are left off.
 		The miner uses the VIA Padlock Hash Engine where available.
 
-Usage instructions:  Run "minerd --help" to see options.
+Usage instructions:  Run "svarog --help" to see options.
 
 Connecting through a proxy:  Use the --proxy option.
 To use a SOCKS proxy, add a socks4:// or socks5:// prefix to the proxy host.

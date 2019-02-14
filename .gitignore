@@ -1,6 +1,6 @@
 
-minerd
-minerd.exe
+svarog
+svarog.exe
 *.o
 
 autom4te.cache
@@ -25,4 +25,3 @@ config.guess
 config.sub
 
 mingw32-config.cache
-

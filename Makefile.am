@@ -18,20 +18,20 @@ svarog_SOURCES	= elist.h miner.h compat.h \
 		  sha2.c vcrypt.c
 if USE_ASM
 if ARCH_x86
-minerd_SOURCES += sha2-x86.S vcrypt-x86.S
+svarog_SOURCES += sha2-x86.S vcrypt-x86.S
 endif
 if ARCH_x86_64
-minerd_SOURCES += sha2-x64.S vcrypt-x64.S
+svarog_SOURCES += sha2-x64.S vcrypt-x64.S
 endif
 if ARCH_ARM
-minerd_SOURCES += sha2-arm.S vcrypt-arm.S
+svarog_SOURCES += sha2-arm.S vcrypt-arm.S
 endif
 if ARCH_PPC
-minerd_SOURCES += sha2-ppc.S vcrypt-ppc.S
+svarog_SOURCES += sha2-ppc.S vcrypt-ppc.S
 endif
 endif
-minerd_LDFLAGS	= $(PTHREAD_FLAGS)
-minerd_LDADD	= @LIBCURL@ @JANSSON_LIBS@ @PTHREAD_LIBS@ @WS2_LIBS@
-minerd_CFLAGS	= -fno-strict-aliasing
-minerd_CPPFLAGS	= @LIBCURL_CPPFLAGS@ $(JANSSON_INCLUDES) $(PTHREAD_FLAGS)
+svarog_LDFLAGS	= $(PTHREAD_FLAGS)
+svarog_LDADD	= @LIBCURL@ @JANSSON_LIBS@ @PTHREAD_LIBS@ @WS2_LIBS@
+svarog_CFLAGS	= -fno-strict-aliasing
+svarog_CPPFLAGS	= @LIBCURL_CPPFLAGS@ $(JANSSON_INCLUDES) $(PTHREAD_FLAGS)
 
